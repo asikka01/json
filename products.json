@@ -1,0 +1,14 @@
+[
+        {
+                "name": "Vintage T-shirt",
+                "description": "Tie-dye Grateful Dead T-shirt",
+                "price": 35,
+                "categories": ["clothing", "vintage"]
+        },
+        {
+                "name": "Vintage Sneakers",
+                "description": "'Worn'-touch and stylish",
+                "price": 55,
+                "categories": ["footwear", "vintage"]
+        }
+]
