@@ -23,17 +23,17 @@
                         });
                 });
 
-                $('#filter-button').click(function() {
-                        const selectedCategory = $('#category-select').val();
-                        const filteredProducts = products.filter(product => product.categories.includes(selectedCategory));
-                        let productDisplay = '';
-
-                        filteredProducts.forEach(product => {
-                                productDisplay += `<div class="filtered-product">${product.name}</div>`;
+                        $('#filter-button').click(function() {
+                                const selectedCategory = $('#category-select').val();
+                                const filteredProducts = products.filter(product => product.categories.includes(selectedCategory));
+                                let productDisplay = '';
+        
+                                filteredProducts.forEach(product => {
+                                        productDisplay += `<div class="filtered-product">${product.name}</div>`;
+                                });
+                                
+                                $('#filtered-products').html(productDisplay);
                         });
-
-                        $('#filtered-products').html(productDisplay);
-                });
                 });
         </script>
 </head>
