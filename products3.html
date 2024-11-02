@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Products Filter</title>
+
+        <link rel="stylesheet" href="style.css">
+
+        <script src="jquery-3.7.1.min.js"></script>
+        
+        <script>
+                $(document).ready(function() {
+                let products = [];
+                $.get('products.json', function(data) {
+                        products = data;
+
+                        const categories = [...new Set(data.flatMap(product => product.categories))];
+                        categories.forEach(category => {
+                                $('#category-select').append(`<option value="${category}">${category}</option>`);
+                        });
+                });
+
+                $('#filter-button').click(function() {
+                        const selectedCategory = $('#category-select').val();
+                        const filteredProducts = products.filter(product => product.categories.includes(selectedCategory));
+                        let productDisplay = '';
+
+                        filteredProducts.forEach(product => {
+                                productDisplay += `<div class="filtered-product">${product.name}</div>`;
+                        });
+
+                        $('#filtered-products').html(productDisplay);
+                });
+                });
+        </script>
+</head>
+
+<body>
+        <h1>Filter Products by Category</h1>
+        <label for="category-select">Select Category:</label>
+
+        <select id="category-select">
+                <option value="">--Select a category--</option>
+        </select>
+
+        <button id="filter-button">Filter</button>
+
+        <div id="filtered-products"></div>
+</body>
+
+</html>
